@@ -5,7 +5,6 @@ fun main (){
         var roman_num = StringBuilder()
         while (num > 0){
             for ((key, value) in map) { 
-               // println(key)
                 if(num / key > 0){
                     for(i in 1..Math.floor(num.toDouble() / key.toDouble()).toInt()){
                         println("Liczba:" + num.toString())
@@ -18,5 +17,5 @@ fun main (){
         }
         return roman_num.toString()
     }
-    println(convertToRoman(2590))
+    println(convertToRoman(2843))
 }
