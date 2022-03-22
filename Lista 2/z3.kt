@@ -1,8 +1,7 @@
 fun main (){
-    fun isCyclic (i: Int): Boolean {
-        var s = i.toString()
-        var tempNum = s.toBigInteger()
-        var len  = (s.length).toInt() + 1
+    fun isCyclic (i: String): Boolean { // Poprawiono przyjmowany typ 
+        var tempNum = i.toBigInteger()
+        var len  = (i.length).toInt() + 1
         var str = len.toString()
         var len1 = str.toBigInteger()
         var buffer = StringBuilder()
@@ -11,15 +10,15 @@ fun main (){
         }
         var buffernum = buffer.toString().toBigInteger()
         if(tempNum.multiply(len1).equals(buffernum)){
-            println("Liczba " + s + " jest cykliczna")
+            println("Liczba " + i + " jest cykliczna")
             return true
         }
         else{
-            println("Liczba " + s + " nie jest cykliczna")
+            println("Liczba " + i + " nie jest cykliczna")
             return false
         }
     }
 
-    println(isCyclic(230769))
-    println(isCyclic(142857))
+    println(isCyclic("230769"))
+    println(isCyclic("142857"))
 }
