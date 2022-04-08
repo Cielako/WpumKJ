@@ -5,7 +5,7 @@ plugins {
     application
 }
 
-group = "me.cielak"
+group = "me.kamil"
 version = "1.0-SNAPSHOT"
 
 repositories {
