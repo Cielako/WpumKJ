@@ -1,6 +1,6 @@
 import kotlin.random.*
-import java.io.File
-import java.io.BufferedReader
+//import java.io.File
+//import java.io.BufferedReader
 fun main(args: Array<String>) {
     var hangman_pics = listOf(
         """
@@ -46,7 +46,7 @@ fun main(args: Array<String>) {
     / \  |
        ===""")
 //hangman_pics.forEach{println(it)}4
-    val bufferedReader: BufferedReader = File("$path/slowa.txt").bufferedReader()
-    val inputString = bufferedReader.use { it.readText() }
-    println(inputString)
+   // val bufferedReader: BufferedReader = File("$path/slowa.txt").bufferedReader()
+   // val inputString = bufferedReader.use { it.readText() }
+    println("test")
 }
