@@ -1,7 +1,7 @@
 import java.io.File
 import java.io.BufferedReader
 import java.nio.file.Paths
-var hangman_pics = listOf(
+var hangman_pics = listOf("",
     """
      +---+
          |
@@ -53,7 +53,7 @@ fun displayGame(missedLetters: String, correctLetters: String, secretWord: Strin
     if(missedLetters.length < hangman_pics.size)
         println(hangman_pics[missedLetters.length])
     var empty = ""
-    var lives = hangman_pics.size - missedLetters.length
+    var lives = (hangman_pics.size -1) - missedLetters.length
 
     for (i in secretWord){
         if (i in correctLetters)
@@ -126,10 +126,10 @@ fun main(args: Array<String>) {
 
         else{
             missedLetters += guess
-            if (missedLetters.length == hangman_pics.size){
+            if (missedLetters.length == (hangman_pics.size - 1)){
                 gameIsDone = true
                 displayGame(missedLetters, correctLetters, secretWord)
-                println("Przegrałeś wyczerpałeś wsztstkie życia: \n Odpowiedź: $secretWord")
+                println("Przegrałeś wyczerpałeś wszystkie życia: \n Odpowiedź: $secretWord")
             }
         }
             if (gameIsDone)
