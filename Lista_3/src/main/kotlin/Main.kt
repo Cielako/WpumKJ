@@ -50,7 +50,8 @@ fun getRandomWord(wordList :List<String>):String{
 }
 
 fun displayGame(missedLetters: String, correctLetters: String, secretWord: String){ // Wyświetlamy Wisielca
-    println(hangman_pics[missedLetters.length])
+    if(missedLetters.length < hangman_pics.size)
+        println(hangman_pics[missedLetters.length])
     var empty = ""
     var lives = hangman_pics.size - missedLetters.length
 
@@ -60,8 +61,8 @@ fun displayGame(missedLetters: String, correctLetters: String, secretWord: Strin
         else
             empty += "_"
     }
-    println("HASLO: " + empty)
-    println("Liczba zyc: " + lives)
+    println("HASŁO: " + empty)
+    println("ŻYCIA: " + lives)
 
     print( "Wykorzystane litery: ")
     missedLetters.forEach { print(it.uppercase() + " ") }
@@ -76,7 +77,7 @@ fun getGuess(guessedAlready: String):String{
         guess = readLine().toString().lowercase()
         if(guess.length != 1)
             println("Wprowadź pojedyńczą literę")
-        else if (guess !in "aąbcćdeęfghijklmnoópqrstuvwxyz" )
+        else if (guess !in "aąbcćdeęfghijklłmnńoópqrstuvwxyzźż" )
             println("Wprowadź literę !!!")
         else if (guess in guessedAlready )
             println("Podaj literę której jeszcze nie wprowadzono")
@@ -101,19 +102,21 @@ fun main(args: Array<String>) {
     var correctLetters = ""
     var secretWord = getRandomWord(words)
     var gameIsDone = false
-
+    var foundAllLetters: Boolean;
     while (true){ // Główna pętla gry
         displayGame(missedLetters, correctLetters, secretWord)
         var guess = getGuess(missedLetters + correctLetters)
 
         if(guess in secretWord) {
             correctLetters += guess
-            var foundAllLetters = true
+
+            foundAllLetters = true
 
             for (element in secretWord) {
-                if (element !in correctLetters)
+                if (element !in correctLetters){
                     foundAllLetters = false
                     break
+                }
             }
             if (foundAllLetters) {
                 println("Gratulacje udało Ci się wygrać :)")
@@ -123,10 +126,10 @@ fun main(args: Array<String>) {
 
         else{
             missedLetters += guess
-            if (missedLetters.length == hangman_pics.size - 1){
+            if (missedLetters.length == hangman_pics.size){
+                gameIsDone = true
                 displayGame(missedLetters, correctLetters, secretWord)
                 println("Przegrałeś wyczerpałeś wsztstkie życia: \n Odpowiedź: $secretWord")
-                gameIsDone = true
             }
         }
             if (gameIsDone)
