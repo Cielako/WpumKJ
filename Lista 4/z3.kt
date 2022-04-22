@@ -22,12 +22,10 @@ fun fib(n: Int): Int{
 }
 
 
-
-
-
-
 fun main() {
     println("Bez tailrec: " + fib2(6))
 
     println("z tailrec: " + fib(6))
 }
+
+
